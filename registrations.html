@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>방문 등록 현황</title>
     <style>
+        /* 기본 CSS 초기화 */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -21,7 +22,7 @@
             padding: 30px 40px;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            max-width: 800px; /* 현황 페이지는 좀 더 넓게 */
+            max-width: 900px; /* 테이블을 위해 너비 확장 */
             width: 100%;
             margin: 30px auto;
         }
@@ -31,27 +32,61 @@
             margin-bottom: 25px;
             font-size: 2.2em;
         }
-        table {
+        .center-logo {
+            display: block;
+            margin: 0px auto 25px auto;
+            max-width: 200px;
+            height: auto;
+        }
+        .home-button-container {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .home-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #9b59b6; /* 보라색 버튼 */
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+        .home-button:hover {
+            background-color: #8e44ad;
+        }
+
+        /* 테이블 스타일 */
+        #registrationList {
+            margin-top: 40px;
+        }
+        #registrationList h2 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        #registrationList table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin-top: 15px;
             background-color: #fff;
             border-radius: 8px;
-            overflow: hidden;
+            overflow: hidden; /* 모서리가 둥글게 보이기 위함 */
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
-        th, td {
+        #registrationList th, #registrationList td {
             border: 1px solid #e0e0e0;
             padding: 12px;
             text-align: left;
             font-size: 0.95em;
         }
-        th {
+        #registrationList th {
             background-color: #ecf0f1;
             color: #34495e;
             font-weight: bold;
         }
-        tr:nth-child(even) {
+        #registrationList tr:nth-child(even) {
             background-color: #f9f9f9;
         }
         .no-registrations {
@@ -63,44 +98,48 @@
             background-color: #fdfde6;
             border: 1px solid #fcecae;
             border-radius: 8px;
+            display: none; /* 기본적으로 숨김, JS에서 표시 */
         }
-        .back-button-container {
-            text-align: center;
-            margin-top: 30px;
-        }
-        .back-button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #95a5a6;
+
+        /* 삭제 버튼 스타일 ⭐ 새로 추가 ⭐ */
+        .delete-button {
+            background-color: #e74c3c; /* 빨간색 배경 */
             color: white;
-            text-decoration: none;
-            border-radius: 6px;
+            border: none;
+            padding: 6px 10px; /* 버튼 크기 조정 */
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85em; /* 폰트 크기 조정 */
             transition: background-color 0.3s ease;
         }
-        .back-button:hover {
-            background-color: #7f8c8d;
+        .delete-button:hover {
+            background-color: #c0392b; /* 더 진한 빨간색 */
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>방문 등록 현황</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>이름</th>
-                    <th>연락처</th>
-                    <th>방문 목적</th>
-                    <th>등록 시간</th>
-                </tr>
-            </thead>
-            <tbody id="registrationTableBody">
-                </tbody>
-        </table>
-        <p id="noRegistrationsMessage" class="no-registrations">등록된 방문자가 없습니다.</p>
+        <img src="CIS.png" alt="처인성어울림센터 로고" class="center-logo">
+        <div class="home-button-container">
+            <a href="index.html" class="home-button">새 방문자 등록하기</a>
+        </div>
 
-        <div class="back-button-container">
-            <a href="index.html" class="back-button">등록 페이지로 돌아가기</a>
+        <div id="registrationList">
+            <h2>현재 방문자 목록</h2>
+            <p id="noRegistrationsMessage" class="no-registrations">등록된 방문자가 없습니다.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>연락처 (뒷 4자리)</th>
+                        <th>방문 목적</th>
+                        <th>등록 시간</th>
+                        <th>삭제</th> </tr>
+                </thead>
+                <tbody id="registrationTableBody">
+                    </tbody>
+            </table>
         </div>
     </div>
 

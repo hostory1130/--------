@@ -13,7 +13,7 @@
             background-color: #f0f2f5;
             display: flex;
             justify-content: center;
-            align-items: flex-start;
+            align-items: flex-start; /* 상단 정렬 */
             min-height: 100vh;
             box-sizing: border-box;
         }
@@ -24,7 +24,7 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             max-width: 650px;
             width: 100%;
-            margin: 30px auto;
+            margin: 30px auto; /* 상하 30px, 좌우 자동 (가운데 정렬) */
         }
         h1 {
             text-align: center;
@@ -45,12 +45,12 @@
         input[type="text"],
         input[type="tel"],
         select {
-            width: calc(100% - 24px);
+            width: calc(100% - 24px); /* 패딩 고려 */
             padding: 12px;
             border: 1px solid #ccc;
             border-radius: 6px;
             font-size: 1em;
-            box-sizing: border-box;
+            box-sizing: border-box; /* 패딩이 너비에 포함되도록 */
             transition: border-color 0.3s ease;
         }
         input[type="text"]:focus,
@@ -74,86 +74,46 @@
         button:hover {
             background-color: #2980b9;
         }
-        #registrationList {
-            margin-top: 40px;
-            border-top: 1px solid #eee;
-            padding-top: 30px;
+        
+        /* 로고 스타일 */
+        /* 로고를 감싸는 링크에 중앙 정렬 및 여백 적용 */
+        .center-logo-link {
+            display: block; /* 블록 요소로 만들어 margin: auto가 작동하게 함 */
+            text-align: center; /* ⭐ 추가: 내부 콘텐츠(로고 이미지)를 가운데 정렬 ⭐ */
+            margin: 0px auto 25px auto; /* 위 0, 좌우 auto(가운데 정렬), 아래 25px 여백 */
+            text-decoration: none; /* 링크 밑줄 제거 */
         }
-        #registrationList h2 {
-            color: #2c3e50;
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 1.8em;
+        .center-logo {
+            max-width: 250px; /* ⭐ 크기 키움: 200px에서 250px로 변경 ⭐ */
+            height: auto; /* 너비에 맞춰 높이 자동 조절 */
+            display: inline-block; /* ⭐ 변경: text-align: center; 가 작동하도록 inline-block으로 변경 ⭐ */
         }
-        #registrationList table {
-            width: 100%;
-            border-collapse: collapse;
+
+        /* 등록 완료 메시지 스타일 */
+        #registrationMessage {
+            display: none; /* 기본적으로 숨김 */
             margin-top: 15px;
-            background-color: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-        #registrationList th, #registrationList td {
-            border: 1px solid #e0e0e0;
-            padding: 12px;
-            text-align: left;
-            font-size: 0.95em;
-        }
-        #registrationList th {
-            background-color: #ecf0f1;
-            color: #34495e;
-            font-weight: bold;
-        }
-        #registrationList tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        .no-registrations {
+            padding: 10px;
+            border-radius: 5px;
             text-align: center;
-            color: #888;
-            margin-top: 20px;
-            font-style: italic;
-            padding: 15px;
-            background-color: #fdfde6;
-            border: 1px solid #fcecae;
-            border-radius: 8px;
+            font-weight: bold;
+            color: #007bff; /* 파란색 텍스트 */
+            background-color: #e9f7ef; /* 연한 초록색 배경 */
+            border: 1px solid #d0e9c6; /* 연한 초록색 테두리 */
+            box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2); /* 은은한 그림자 */
         }
-        /* CSS 스타일 끝 바로 위에 추가 */
-.view-registrations-container {
-    text-align: center;
-    margin-bottom: 25px; /* 폼과의 간격 */
-}
-.view-registrations-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #2ecc71; /* 초록색 버튼 */
-    color: white;
-    text-decoration: none; /* 밑줄 제거 */
-    border-radius: 6px;
-    font-size: 1.1em;
-    transition: background-color 0.3s ease;
-}
-.view-registrations-button:hover {
-    background-color: #27ae60;
-}
-        /* CSS 스타일 끝 바로 위에 추가 */
-.center-logo {
-    display: block; /* 이미지를 블록 요소로 만들어 margin: auto가 작동하도록 함 */
-    margin: 0px auto 25px auto; /* 위 0, 좌우 auto(가운데 정렬), 아래 25px 여백 */
-    max-width: 200px; /* 로고의 최대 너비를 150px로 제한 */
-    height: auto; /* 너비에 맞춰 높이 자동 조절 */
-}
         /* CSS 스타일 끝 */
     </style>
 </head>
 <body>
     <div class="container">
-    <h1>처인성어울림센터 방문 등록</h1>
-    <img src="CIS.png" alt="처인성어울림센터 로고" class="center-logo">
-     <div class="view-registrations-container">
-        <a href="registrations.html" class="view-registrations-button">방문 등록 현황 보기</a>
-    </div>
-    <form id="visitForm">
+        <h1>처인성어울림센터 방문 등록</h1>
+        
+        <a href="registrations.html" class="center-logo-link">
+            <img src="CIS.png" alt="처인성어울림센터 로고" class="center-logo">
+        </a>
+        
+        <form id="visitForm">
             <div class="form-group">
                 <label for="name">이름:</label>
                 <input type="text" id="name" required placeholder="예: 홍길동">
@@ -176,9 +136,12 @@
             <button type="submit">등록하기</button>
         </form>
 
-    
+        <div id="registrationMessage">
+            등록이 완료되었습니다!
+        </div>
+        
     </div>
-
+    
     <script src="script.js"></script>
 </body>
 </html>
