@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>처인성어울림센터 방문 등록</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
         /* CSS 스타일 시작 */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Noto Sans KR', sans-serif; /* Noto Sans KR 폰트 적용 */
             margin: 0;
             padding: 20px;
             background-color: #f0f2f5;
@@ -74,33 +79,49 @@
         button:hover {
             background-color: #2980b9;
         }
-        
-        /* 로고 스타일 */
-        /* 로고를 감싸는 링크에 중앙 정렬 및 여백 적용 */
+
+        /* 로고 스타일 (상단) */
         .center-logo-link {
-            display: block; /* 블록 요소로 만들어 margin: auto가 작동하게 함 */
-            text-align: center; /* ⭐ 추가: 내부 콘텐츠(로고 이미지)를 가운데 정렬 ⭐ */
-            margin: 0px auto 25px auto; /* 위 0, 좌우 auto(가운데 정렬), 아래 25px 여백 */
-            text-decoration: none; /* 링크 밑줄 제거 */
+            display: block;
+            text-align: center;
+            margin: 0px auto 25px auto;
+            text-decoration: none;
         }
         .center-logo {
-            max-width: 250px; /* ⭐ 크기 키움: 200px에서 250px로 변경 ⭐ */
-            height: auto; /* 너비에 맞춰 높이 자동 조절 */
-            display: inline-block; /* ⭐ 변경: text-align: center; 가 작동하도록 inline-block으로 변경 ⭐ */
+            max-width: 250px; /* 크기 유지 */
+            height: auto;
+            display: inline-block;
         }
 
         /* 등록 완료 메시지 스타일 */
         #registrationMessage {
-            display: none; /* 기본적으로 숨김 */
+            display: none;
             margin-top: 15px;
             padding: 10px;
             border-radius: 5px;
             text-align: center;
-            font-weight: bold;
-            color: #007bff; /* 파란색 텍스트 */
-            background-color: #e9f7ef; /* 연한 초록색 배경 */
-            border: 1px solid #d0e9c6; /* 연한 초록색 테두리 */
-            box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2); /* 은은한 그림자 */
+            font-weight: normal;
+            color: #007bff;
+            background-color: #e9f7ef;
+            border: 1px solid #d0e9c6;
+            box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2);
+        }
+
+        /* ⭐ JOA.png 이미지 스타일 (더 크게) ⭐ */
+        .decoration-image-joa {
+            display: block;
+            margin: 25px auto 15px auto; /* 위쪽 여백, 가운데 정렬, 아래쪽 여백 */
+            max-width: 350px; /* 이미지 최대 너비 증가 */
+            height: auto;
+        }
+
+        /* ⭐ YONGIN.png 로고 스타일 (아래) ⭐ */
+        .center-logo-yongin { /* Class name changed to center-logo-yongin */
+            display: block;
+            text-align: center;
+            margin: 20px auto 0 auto; /* 위쪽 여백, 가운데 정렬, 아래쪽 여백 0 */
+            max-width: 120px; /* 로고 최대 너비를 120px로 조정 */
+            height: auto;
         }
         /* CSS 스타일 끝 */
     </style>
@@ -108,11 +129,11 @@
 <body>
     <div class="container">
         <h1>처인성어울림센터 방문 등록</h1>
-        
+
         <a href="registrations.html" class="center-logo-link">
             <img src="CIS.png" alt="처인성어울림센터 로고" class="center-logo">
         </a>
-        
+
         <form id="visitForm">
             <div class="form-group">
                 <label for="name">이름:</label>
@@ -120,7 +141,7 @@
             </div>
             <div class="form-group">
                 <label for="phone">연락처 (뒷 4자리):</label>
-                <input type="tel" id="phone" required placeholder="예: 5678" maxlength="4" pattern="[0-9]{4}">
+                <input type="tel" id="phone" required placeholder="예: 5678" maxlength="4" pattern="^[0-9]{4}$">
             </div>
             <div class="form-group">
                 <label for="purpose">방문 목적:</label>
@@ -139,9 +160,12 @@
         <div id="registrationMessage">
             등록이 완료되었습니다!
         </div>
-        
+
+        <img src="JOA.png" alt="귀여운 이미지" class="decoration-image-joa">
+        <img src="YONGIN.png" alt="센터 로고" class="center-logo-yongin">
+
     </div>
-    
+
     <script src="script.js"></script>
 </body>
 </html>
